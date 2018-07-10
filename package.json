@@ -6,6 +6,9 @@
   "author": "Chance Dickson <me@chancedickson.com>",
   "license": "MIT",
   "main": "index.js",
+  "dependencies": {
+    "immutable": "^3.8.2"
+  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -27,8 +30,5 @@
   "bugs": {
     "url": "https://github.com/chancedickson/redux-silo/issues"
   },
-  "homepage": "https://github.com/chancedickson/redux-silo#readme",
-  "dependencies": {
-    "immutable": "^3.8.2"
-  }
+  "homepage": "https://github.com/chancedickson/redux-silo#readme"
 }
