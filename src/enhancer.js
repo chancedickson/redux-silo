@@ -17,7 +17,7 @@
 
 import { mapValues, reduceObject } from "./util";
 
-export function compileReducersInner({ reducers, reducerByName }, value, key) {
+function compileReducersInner({ reducers, reducerByName }, value, key) {
   if (typeof key !== "string") {
     throw new Error(
       `Keys in the reducer tree must be strings. Received ${JSON.stringify(
@@ -57,6 +57,12 @@ export function compileReducersInner({ reducers, reducerByName }, value, key) {
 }
 
 export function compileReducerTree(tree) {
+  if (typeof tree !== "object" || Array.isArray(tree)) {
+    throw new Error(
+      "You must pass silo() a reducer tree. A reducer tree is an object with string keys and reducer function or reducer tree values.",
+    );
+  }
+
   const { reducers, reducerByName } = reduceObject(tree, compileReducersInner, {
     reducers: [],
     reducerByName: {},

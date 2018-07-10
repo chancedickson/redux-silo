@@ -27,32 +27,31 @@ function createSiloConnector(Consumer) {
       ? `SiloConnector<${componentName}>`
       : "SiloConnector";
 
-    return class extends PureComponent {
-      static displayName = connectedName;
+    function connected() {
+      return (
+        <Consumer>
+          {({ state, store }) => {
+            const props = this.props;
+            const passedState = reduceObject(
+              reducerMap,
+              (passedState, v, k) => {
+                return {
+                  ...passedState,
+                  [k]: state.getIn(store.getReducerPath(v)),
+                };
+              },
+              {},
+            );
+            const mappedState = mapStateToProps(passedState, props);
 
-      render() {
-        return (
-          <Consumer>
-            {({ state, store }) => {
-              const props = this.props;
-              const passedState = reduceObject(
-                reducerMap,
-                (passedState, v, k) => {
-                  return {
-                    ...passedState,
-                    [k]: state.getIn(store.getReducerPath(v)),
-                  };
-                },
-                {},
-              );
-              const mappedState = mapStateToProps(passedState, props);
+            return <Component {...props} {...mappedState} />;
+          }}
+        </Consumer>
+      );
+    }
+    connected.displayName = connectedName;
 
-              return <Component {...props} {...mappedState} />;
-            }}
-          </Consumer>
-        );
-      }
-    };
+    return connected;
   };
 }
 
@@ -60,7 +59,7 @@ export function createSiloConnector(store) {
   const { Provider, Consumer } = React.createContext();
 
   return {
-    Provider: createSiloProvider(Provider),
+    Provider: createSiloProvider(store, Provider),
     connect: createSiloConnector(Consumer),
   };
 }
