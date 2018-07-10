@@ -1,0 +1,26 @@
+{
+  "name": "redux-silo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An alternative to react-redux promoting a domain structure.",
+  "author": "Chance Dickson <me@chancedickson.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "devDependencies": {
+    "prettier": "^1.13.7"
+  },
+  "peerDependencies": {
+    "react": "^16.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chancedickson/redux-silo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chancedickson/redux-silo/issues"
+  },
+  "homepage": "https://github.com/chancedickson/redux-silo#readme"
+}
