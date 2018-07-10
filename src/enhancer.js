@@ -15,6 +15,7 @@
  *    actions to nested reducers iterative instead of recursive.
  */
 
+import { Map } from "immutable";
 import { mapValues, reduceObject } from "./util";
 
 function compileReducersInner({ reducers, reducerByName }, value, key) {
@@ -72,11 +73,11 @@ export function compileReducerTree(tree) {
     reducers,
     reducerByName,
     reducer(state = Map(), action) {
-      return reducers.reduce((reducer) => {
+      return reducers.reduce((state, reducer) => {
         const path = reducerByName[reducer.name];
         const newState = reducer(state.getIn(path), action);
         return state.setIn(path, newState);
-      });
+      }, state);
     },
   };
 }
@@ -85,7 +86,7 @@ export function silo(createStore) {
   return (...args) => {
     const reducerTree = args[0];
     let { reducers, reducerByName, reducer } = compileReducerTree(reducerTree);
-    const createStoreArgs = [reducer, args.slice(1)];
+    const createStoreArgs = [reducer, ...args.slice(1)];
     const store = createStore(...createStoreArgs);
 
     return {

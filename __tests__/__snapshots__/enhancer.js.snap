@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`compileReducerTree.reducerByName matches snapshot. 1`] = `
+Object {
+  "test1": Array [
+    "test1",
+  ],
+  "test10": Array [
+    "test4",
+    "test7",
+    "test9",
+    "test10",
+  ],
+  "test3": Array [
+    "test2",
+    "test3",
+  ],
+  "test5": Array [
+    "test4",
+    "test5",
+  ],
+  "test6": Array [
+    "test4",
+    "test6",
+  ],
+  "test8": Array [
+    "test4",
+    "test7",
+    "test8",
+  ],
+}
+`;

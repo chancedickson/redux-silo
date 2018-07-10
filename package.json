@@ -7,7 +7,12 @@
   "license": "MIT",
   "main": "index.js",
   "devDependencies": {
-    "prettier": "^1.13.7"
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^23.4.0",
+    "prettier": "^1.13.7",
+    "redux": "^4.0.0"
   },
   "peerDependencies": {
     "react": "^16.4.1"
@@ -22,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/chancedickson/redux-silo/issues"
   },
-  "homepage": "https://github.com/chancedickson/redux-silo#readme"
+  "homepage": "https://github.com/chancedickson/redux-silo#readme",
+  "dependencies": {
+    "immutable": "^3.8.2"
+  }
 }
